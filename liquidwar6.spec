@@ -3,12 +3,13 @@ Summary(fr):	Un "wargame" multijoueur inédit
 Summary(de):	Ein einzigartiges Kriegspiel für mehrere Spieler
 Summary(pl):	Unikalna gra wojenna dla wielu graczy
 Name:		liquidwar
-Version:	5.6.0
+Version:	5.6.2
 Release:	1
 License:	GPL
 Group:		Applications/Games
-Source0:	http://freesoftware.fsf.org/download/liquidwar/%{name}-%{version}.tar.gz
-Patch0:		%{name}-destdir.patch
+Source0:	http://liquidwar.sunsite.dk/archive/liquidwar-5.6.2.tar.gz
+# Source0-md5:	981c5f00ddf2364c7b9d31fea82852be
+Patch0:		%{name}-man_fix.patch
 URL:		http://www.ufoot.org/liquidwar/
 BuildRequires:	allegro-devel
 BuildRequires:	allegro-tools
@@ -61,6 +62,10 @@ wielu graczy, te¿ graj±cych przez sieæ.
 %{__autoconf}
 %configure
 %{__make}
+cd doc/man
+echo '.so liquidwar.6' > liquidwar-server.6
+echo '.so liquidwar.6' > liquidwar-mapgen.6
+cd ../..
 
 %install
 rm -rf $RPM_BUILD_ROOT

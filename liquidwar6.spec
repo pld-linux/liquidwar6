@@ -6,7 +6,7 @@ Name:		liquidwar
 Version:	5.6.2
 Release:	1
 License:	GPL
-Group:		Applications/Games
+Group:		X11/Applications/Games
 Source0:	http://liquidwar.sunsite.dk/archive/liquidwar-5.6.2.tar.gz
 # Source0-md5:	981c5f00ddf2364c7b9d31fea82852be
 Patch0:		%{name}-man_fix.patch

@@ -85,7 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc doc/html/*.html doc/txt/*.txt
-%{_prefix}/games/liquidwar*
+%attr(755,root,root) %{_prefix}/games/liquidwar*
 %attr(755,root,root) %{_bindir}/liquidwar
 %attr(755,root,root) %{_bindir}/liquidwar-server
 %{_datadir}/games/liquidwar

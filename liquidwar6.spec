@@ -13,6 +13,7 @@ URL:		http://www.ufoot.org/liquidwar/
 BuildRequires:	allegro-devel
 BuildRequires:	allegro-tools
 BuildRequires:	python-modules
+BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

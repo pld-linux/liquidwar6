@@ -14,6 +14,7 @@ URL:		http://www.ufoot.org/liquidwar/
 BuildRequires:	allegro-devel
 BuildRequires:	allegro-tools
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	python-modules
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -59,6 +60,7 @@ wielu graczy, te¿ graj±cych przez sieæ.
 %patch0 -p1
 
 %build
+cp -f %{_datadir}/automake/config.sub .
 %{__autoconf}
 %configure
 %{__make}

@@ -26,6 +26,13 @@ army of liquid and have to try and eat your opponents. A single player
 mode is available, but the game is definitely designed to be
 multiplayer, and has network support.
 
+%description -l da
+Liquid war er et unikt multiplayer krigsspil. Reglerne er uhyre
+originale og er opfundet af Thomas Colcombet. Du styrer en hær af
+væske og skal prøve at æde dine modstandere. Liquid War kan spilles
+alene, men er helt afgjort designet til multiplayer, og har
+netværks-support.
+
 %description -l de
 Liquid War ist ein einzigartiges Kriegsspiel für mehrere Spieler. Die
 Regeln sind wahrhaft neuartig und wurden von Thomas Colcombet
@@ -33,13 +40,6 @@ entwickelt. Man steuert eine flüssige Armee und muss versuchen die
 Gegner aufzufressen. Es gibt einen Einzelspielermodus, aber das Spiel
 ist eindeutig auf mehrere Spieler ausgelegt und unterstützt das
 Spielen über Netzwerk.
-
-%description -l dk
-Liquid war er et unikt multiplayer krigsspil. Reglerne er uhyre
-originale og er opfundet af Thomas Colcombet. Du styrer en hær af
-væske og skal prøve at æde dine modstandere. Liquid War kan spilles
-alene, men er helt afgjort designet til multiplayer, og har
-netværks-support.
 
 %description -l fr
 Liquid War est un "wargame" multijoueur inédit. Ses règles sont

@@ -62,8 +62,14 @@ wielu graczy, te¿ graj±cych przez sieæ.
 %build
 cp -f %{_datadir}/automake/config.sub .
 %{__autoconf}
-%configure
+%configure \
+%ifnarch %{ix86}
+	--disable-target-opt \
+	--disable-asm
+%endif
+
 %{__make}
+
 cd doc/man
 echo '.so liquidwar.6' > liquidwar-server.6
 echo '.so liquidwar.6' > liquidwar-mapgen.6

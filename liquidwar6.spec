@@ -1,7 +1,7 @@
-Summary:	A unique multiplayer wargame.
-Summary(fr):	Un "wargame" multijoueur inédit.
-Summary(de):	Ein einzigartiges Kriegspiel für mehrere Spieler.
-Summary(pl):	Unikalna gra dla wielu graczy
+Summary:	A unique multiplayer wargame
+Summary(fr):	Un "wargame" multijoueur inédit
+Summary(de):	Ein einzigartiges Kriegspiel für mehrere Spieler
+Summary(pl):	Unikalna gra wojenna dla wielu graczy
 Name:		liquidwar
 Version:	5.6.0
 Release:	1
@@ -12,6 +12,7 @@ Patch0:		%{name}-destdir.patch
 URL:		http://www.ufoot.org/liquidwar/
 BuildRequires:	allegro-devel
 BuildRequires:	allegro-tools
+BuildRequires:	autoconf
 BuildRequires:	python-modules
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -22,20 +23,6 @@ original and have been invented by Thomas Colcombet. You control an
 army of liquid and have to try and eat your opponents. A single player
 mode is available, but the game is definitely designed to be
 multiplayer, and has network support.
-
-%description -l pl
-Liquid War jest unikaln± gr± dla wielu graczy. Jej zasady, wymy¶lone przez
-Thomasa Colcombeta s± naprawdê nowatorskie. Kontrolujesz armiê p³ynu i musisz
-spróbowaæ stawiæ czo³a i wch³on±æ swoich przeciwników. Mo¿na wprawdzie graæ w
-pojedynkê, ale gra jest zaprojektowana dla wielu graczy, te¿ graj±cych przez
-sieæ.
-
-%description -l fr
-Liquid War est un "wargame" multijoueur inédit. Ses règles sont
-vraiment originales et ont été inventées par Thomas Colcombet. L'idée
-est de contrôler une armée de liquide et d'essayer de "manger" ses
-adversaires. Il est possible de jouer seul, mais le jeux est conçu
-pour se jouer à plusieurs, un mode réseau étant disponible.
 
 %description -l de
 Liquid War ist ein einzigartiges Kriegsspiel für mehrere Spieler. Die
@@ -52,7 +39,20 @@ væske og skal prøve at æde dine modstandere. Liquid War kan spilles
 alene, men er helt afgjort designet til multiplayer, og har
 netværks-support.
 
-# Preparation of the package
+%description -l fr
+Liquid War est un "wargame" multijoueur inédit. Ses règles sont
+vraiment originales et ont été inventées par Thomas Colcombet. L'idée
+est de contrôler une armée de liquide et d'essayer de "manger" ses
+adversaires. Il est possible de jouer seul, mais le jeux est conçu
+pour se jouer à plusieurs, un mode réseau étant disponible.
+
+%description -l pl
+Liquid War jest unikaln± gr± dla wielu graczy. Jej zasady, wymy¶lone
+przez Thomasa Colcombeta s± naprawdê nowatorskie. Kontrolujesz armiê
+p³ynu i musisz spróbowaæ stawiæ czo³a i wch³on±æ swoich przeciwników.
+Mo¿na wprawdzie graæ w pojedynkê, ale gra jest zaprojektowana dla
+wielu graczy, te¿ graj±cych przez sieæ.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -64,11 +64,12 @@ netværks-support.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install \
-	DESTDIR=%{buildroot}
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
-rm -rf %{buildroot}
+rm -rf $RPM_BUILD_ROOT
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
@@ -82,8 +83,8 @@ rm -rf %{buildroot}
 %{_prefix}/games/liquidwar*
 %attr(755,root,root) %{_bindir}/liquidwar
 %attr(755,root,root) %{_bindir}/liquidwar-server
-%{_datadir}/games/liquidwar/
+%{_datadir}/games/liquidwar
 %{_mandir}/man*/*
 %{_infodir}/liquidwar.info*
-%{_datadir}/applications/*.desktop
-%{_datadir}/pixmaps/*
+%{_desktopdir}/*.desktop
+%{_pixmapsdir}/*

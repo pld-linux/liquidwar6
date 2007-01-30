@@ -4,7 +4,7 @@ Summary(de):	Ein einzigartiges Kriegspiel für mehrere Spieler
 Summary(pl):	Unikalna gra wojenna dla wielu graczy
 Name:		liquidwar
 Version:	5.6.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://liquidwar.sunsite.dk/archive/%{name}-%{version}.tar.gz

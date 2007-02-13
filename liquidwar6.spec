@@ -1,7 +1,7 @@
 Summary:	A unique multiplayer wargame
-Summary(fr.UTF-8):   Un "wargame" multijoueur inédit
-Summary(de.UTF-8):   Ein einzigartiges Kriegspiel für mehrere Spieler
-Summary(pl.UTF-8):   Unikalna gra wojenna dla wielu graczy
+Summary(fr.UTF-8):	Un "wargame" multijoueur inédit
+Summary(de.UTF-8):	Ein einzigartiges Kriegspiel für mehrere Spieler
+Summary(pl.UTF-8):	Unikalna gra wojenna dla wielu graczy
 Name:		liquidwar
 Version:	5.6.2
 Release:	1

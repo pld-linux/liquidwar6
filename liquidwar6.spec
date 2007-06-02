@@ -3,12 +3,12 @@ Summary(fr.UTF-8):	Un "wargame" multijoueur inédit
 Summary(de.UTF-8):	Ein einzigartiges Kriegspiel für mehrere Spieler
 Summary(pl.UTF-8):	Unikalna gra wojenna dla wielu graczy
 Name:		liquidwar
-Version:	5.6.2
+Version:	5.6.3
 Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://liquidwar.sunsite.dk/archive/%{name}-%{version}.tar.gz
-# Source0-md5:	981c5f00ddf2364c7b9d31fea82852be
+Source0:	http://download.savannah.nongnu.org/releases/liquidwar/%{name}-%{version}.tar.gz
+# Source0-md5:	a41473c281f214c1ac96ab50f98537c9
 Patch0:		%{name}-man_fix.patch
 URL:		http://www.ufoot.org/liquidwar/
 BuildRequires:	allegro-devel
@@ -16,6 +16,7 @@ BuildRequires:	allegro-tools
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	python-modules
+BuildRequires:	tetex-dvips
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

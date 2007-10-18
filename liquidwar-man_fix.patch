@@ -1,7 +1,6 @@
-diff -burN liquidwar-5.6.2.orig/doc/Makefile.in liquidwar-5.6.2/doc/Makefile.in
---- liquidwar-5.6.2.orig/doc/Makefile.in	2004-02-23 11:04:10.898526696 +0100
-+++ liquidwar-5.6.2/doc/Makefile.in	2004-02-23 22:37:54.969706048 +0100
-@@ -43,7 +43,7 @@
+--- liquidwar-5.6.4/doc/Makefile.in~	2007-10-17 22:00:47.000000000 +0200
++++ liquidwar-5.6.4/doc/Makefile.in	2007-10-18 19:13:15.000000000 +0200
+@@ -48,7 +48,7 @@
  
  html_yes: $(HTML_FILES) 
  
@@ -10,15 +9,14 @@ diff -burN liquidwar-5.6.2.orig/doc/Makefile.in liquidwar-5.6.2/doc/Makefile.in
  
  info_yes: info/liquidwar.info.gz
  
-diff -burN liquidwar-5.6.2.orig/Makefile.in liquidwar-5.6.2/Makefile.in
---- liquidwar-5.6.2.orig/Makefile.in	2004-02-23 11:04:11.551427440 +0100
-+++ liquidwar-5.6.2/Makefile.in	2004-02-23 22:35:06.456323976 +0100
-@@ -145,7 +145,7 @@
+--- liquidwar-5.6.4/Makefile.in~	2007-10-17 22:00:47.000000000 +0200
++++ liquidwar-5.6.4/Makefile.in	2007-10-18 19:15:49.000000000 +0200
+@@ -149,7 +149,7 @@
  install_doc:
- 	@if [ -f $(MAKE_DOC_DIR)/txt/rules.txt ]; then echo "Installing liquidwar plain text doc in $(DOCDIR)/txt."; install -d $(DESTDIR)$(DOCDIR)/txt; install -m 0644 $(MAKE_DOC_DIR)/txt/*.txt $(DESTDIR)$(DOCDIR)/txt; fi
- 	@if [ -f $(MAKE_DOC_DIR)/html/rules.html ]; then echo "Installing liquidwar HTML doc in $(DOCDIR)/html."; install -d $(DESTDIR)$(DOCDIR)/html; install -m 0644 $(MAKE_DOC_DIR)/html/*.html $(DESTDIR)$(DOCDIR)/html; fi
--	@if [ -f $(MAKE_DOC_DIR)/man/liquidwar.6.gz ]; then echo "Installing liquidwar man page in $(MANDIR)."; install -d $(DESTDIR)$(MANDIR); install -m 0644 $(MAKE_DOC_DIR)/man/liquidwar.6.gz $(DESTDIR)$(MANDIR); ln -s -f liquidwar.6.gz $(DESTDIR)$(MANDIR)/liquidwar-server.6.gz; ln -s -f liquidwar.6.gz $(DESTDIR)$(MANDIR)/liquidwar-mapgen.6.gz; fi
+ 	@if [ -f $(MAKE_DOC_DIR)/txt/rules.txt ]; then echo "Installing liquidwar plain text doc in $(DOCDIR)/txt."; install -d $(DESTDIR)$(DOCDIR)/txt; install -c -m 0644 $(MAKE_DOC_DIR)/txt/*.txt $(DESTDIR)$(DOCDIR)/txt; fi
+ 	@if [ -f $(MAKE_DOC_DIR)/html/rules.html ]; then echo "Installing liquidwar HTML doc in $(DOCDIR)/html."; install -d $(DESTDIR)$(DOCDIR)/html; install -c -m 0644 $(MAKE_DOC_DIR)/html/*.html $(DESTDIR)$(DOCDIR)/html; fi
+-	@if [ -f $(MAKE_DOC_DIR)/man/liquidwar.6.gz ]; then echo "Installing liquidwar man page in $(MANDIR)."; install -d $(DESTDIR)$(MANDIR); install -c -m 0644 $(MAKE_DOC_DIR)/man/liquidwar.6.gz $(DESTDIR)$(MANDIR); ln -s -f liquidwar.6.gz $(DESTDIR)$(MANDIR)/liquidwar-server.6.gz; ln -s -f liquidwar.6.gz $(DESTDIR)$(MANDIR)/liquidwar-mapgen.6.gz; fi
 +	@if [ -f $(MAKE_DOC_DIR)/man/liquidwar.6 ]; then echo "Installing liquidwar man page in $(MANDIR)."; install -d $(DESTDIR)$(MANDIR); install -m 0644 $(MAKE_DOC_DIR)/man/liquidwar.6 $(MAKE_DOC_DIR)/man/liquidwar-server.6 $(MAKE_DOC_DIR)/man/liquidwar-mapgen.6 $(DESTDIR)$(MANDIR); fi
- 	@if [ -f $(MAKE_DOC_DIR)/info/liquidwar.info.gz ]; then echo "Installing info page $(INFODIR)/liquidwar.info.gz."; install -d $(DESTDIR)$(INFODIR); install -m 644 $(MAKE_DOC_DIR)/info/liquidwar.info* $(DESTDIR)$(INFODIR); if which install-info; then if test -d $(DESTDIR)$(INFODIRDIR); then if test -f $(DESTDIR)$(INFODIRDIR)/dir; then echo "Installing liquidwar info entry."; install-info --info-dir=$(DESTDIR)$(INFODIRDIR) $(MAKE_DOC_DIR)/info/liquidwar.info.gz; fi; fi; fi; fi
- 	@if [ -f $(MAKE_DOC_DIR)/ps/liquidwar.ps ]; then echo "Installing liquidwar PostScript doc in $(DOCDIR)/ps."; install -d $(DESTDIR)$(DOCDIR)/ps; install -m 0644 $(MAKE_DOC_DIR)/ps/*.ps $(DESTDIR)$(DOCDIR)/ps; fi
- 	@if [ -f $(MAKE_DOC_DIR)/pdf/liquidwar.pdf ]; then echo "Installing liquidwar PDF doc in $(DOCDIR)/pdf."; install -d $(DESTDIR)$(DOCDIR)/pdf; install -m 0644 $(MAKE_DOC_DIR)/pdf/*.pdf $(DESTDIR)$(DOCDIR)/pdf; fi
+ 	@if [ -f $(MAKE_DOC_DIR)/info/liquidwar.info.gz ]; then echo "Installing info page $(INFODIR)/liquidwar.info.gz."; install -d $(DESTDIR)$(INFODIR); install -c -m 644 $(MAKE_DOC_DIR)/info/liquidwar.info* $(DESTDIR)$(INFODIR); if which install-info; then if test -d $(DESTDIR)$(INFODIRDIR); then if test -f $(DESTDIR)$(INFODIRDIR)/dir; then echo "Installing liquidwar info entry."; install-info --info-dir=$(DESTDIR)$(INFODIRDIR) $(MAKE_DOC_DIR)/info/liquidwar.info.gz; fi; fi; fi; fi
+ 	@if [ -f $(MAKE_DOC_DIR)/ps/liquidwar.ps ]; then echo "Installing liquidwar PostScript doc in $(DOCDIR)/ps."; install -d $(DESTDIR)$(DOCDIR)/ps; install -c -m 0644 $(MAKE_DOC_DIR)/ps/*.ps $(DESTDIR)$(DOCDIR)/ps; fi
+ 	@if [ -f $(MAKE_DOC_DIR)/pdf/liquidwar.pdf ]; then echo "Installing liquidwar PDF doc in $(DOCDIR)/pdf."; install -d $(DESTDIR)$(DOCDIR)/pdf; install -c -m 0644 $(MAKE_DOC_DIR)/pdf/*.pdf $(DESTDIR)$(DOCDIR)/pdf; fi

@@ -1,25 +1,23 @@
+%define	_beta	beta
 Summary:	A unique multiplayer wargame
 Summary(fr.UTF-8):	Un "wargame" multijoueur inédit
 Summary(de.UTF-8):	Ein einzigartiges Kriegspiel für mehrere Spieler
 Summary(pl.UTF-8):	Unikalna gra wojenna dla wielu graczy
-Name:		liquidwar
-Version:	5.6.4
-Release:	1
-License:	GPL v2+
+Name:		liquidwar6
+Version:	0.0.3
+Release:	0.%{_beta}.1
+License:	GPL v3+
 Group:		X11/Applications/Games
-Source0:	http://download.savannah.nongnu.org/releases/liquidwar/%{name}-%{version}.tar.gz
-# Source0-md5:	6917dd1026e6685404ffbd086f8ba374
-Patch0:		%{name}-man_fix.patch
-Patch1:		%{name}-desktop.patch
+Source0:	http://download.savannah.gnu.org/releases/liquidwar6/%{name}-%{version}%{_beta}.tar.gz
+# Source0-md5:	92c4fe0e0bc781ca1bdd0ec22a4c64e3
 URL:		http://www.ufoot.org/liquidwar/
-BuildRequires:	allegro-devel
-BuildRequires:	allegro-tools
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	python-modules
-BuildRequires:	tetex-dvips
-BuildRequires:	tetex-format-latex
-BuildRequires:	texinfo
+BuildRequires:	curl-devel
+BuildRequires:	guile-devel
+BuildRequires:	ncurses-devel
+BuildRequires:	sed >= 4.0
+BuildRequires:	sqlite3-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,25 +57,17 @@ Można wprawdzie grać w pojedynkę, ale gra jest zaprojektowana dla
 wielu graczy, też grających przez sieć.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%setup -q -n %{name}-%{version}%{_beta}
+%{__sed} -i -e 's#ncurses.h#ncurses/ncurses.h#' configure.ac
 
 %build
-cp -f %{_datadir}/automake/config.sub .
+%{__aclocal} -I m4
 %{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
-%ifnarch %{ix86}
-	--disable-target-opt \
-	--disable-asm
-%endif
 
 %{__make}
-
-cd doc/man
-echo '.so liquidwar.6' > liquidwar-server.6
-echo '.so liquidwar.6' > liquidwar-mapgen.6
-cd ../..
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -88,20 +78,14 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p	/sbin/postshell
--/usr/sbin/fix-info-dir -c %{_infodir}
-
-%postun	-p	/sbin/postshell
--/usr/sbin/fix-info-dir -c %{_infodir}
-
 %files
 %defattr(644,root,root,755)
-%doc doc/html/*.html doc/txt/*.txt
-%attr(755,root,root) %{_prefix}/games/liquidwar*
-%attr(755,root,root) %{_bindir}/liquidwar
-%attr(755,root,root) %{_bindir}/liquidwar-server
-%{_datadir}/games/liquidwar
-%{_mandir}/man*/*
-%{_infodir}/liquidwar.info*
-%{_desktopdir}/*.desktop
-%{_pixmapsdir}/*
+#%doc doc/html/*.html doc/txt/*.txt
+#%attr(755,root,root) %{_prefix}/games/liquidwar*
+#%attr(755,root,root) %{_bindir}/liquidwar
+#%attr(755,root,root) %{_bindir}/liquidwar-server
+#%{_datadir}/games/liquidwar
+#%{_mandir}/man*/*
+#%{_infodir}/liquidwar.info*
+#%{_desktopdir}/*.desktop
+#%{_pixmapsdir}/*

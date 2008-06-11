@@ -62,13 +62,14 @@ wielu graczy, też grających przez sieć.
 %setup -q -n %{name}-%{version}%{_beta}
 %{__sed} -i -e 's#ncurses.h#ncurses/ncurses.h#' configure.ac
 
+find . -name Makefile.am | xargs %{__sed} -i -e 's#@PACKAGE_TARNAME@-@PACKAGE_VERSION@#@PACKAGE_TARNAME@#'
+
 %build
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure \
-
+%configure 
 %{__make}
 
 %install
@@ -77,17 +78,15 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%find_lang %{name} --all-name
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
-#%doc doc/html/*.html doc/txt/*.txt
-#%attr(755,root,root) %{_prefix}/games/liquidwar*
-#%attr(755,root,root) %{_bindir}/liquidwar
-#%attr(755,root,root) %{_bindir}/liquidwar-server
-#%{_datadir}/games/liquidwar
-#%{_mandir}/man*/*
-#%{_infodir}/liquidwar.info*
-#%{_desktopdir}/*.desktop
-#%{_pixmapsdir}/*
+%doc ABOUT-NLS AUTHORS ChangeLog NEWS README  doc/*
+%attr(755,root,root) %{_bindir}/%{name}
+%{_datadir}/%{name}
+%{_mandir}/man6/liquidwar6.6*
+%{_infodir}/liquidwar6.info*

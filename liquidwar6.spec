@@ -1,3 +1,7 @@
+#
+# TODO 
+# - fix path for liquidwar6.scm (it seems to be somewhwere in binary files) in other case restore version numbering in datadir path
+#
 %define	_beta	beta
 Summary:	A unique multiplayer wargame
 Summary(fr.UTF-8):	Un "wargame" multijoueur inédit
@@ -62,6 +66,7 @@ wielu graczy, też grających przez sieć.
 %setup -q -n %{name}-%{version}%{_beta}
 %{__sed} -i -e 's#ncurses.h#ncurses/ncurses.h#' configure.ac
 
+# application searches for liquidwar6.scm in wrong place after this command (see TODO)
 find . -name Makefile.am | xargs %{__sed} -i -e 's#@PACKAGE_TARNAME@-@PACKAGE_VERSION@#@PACKAGE_TARNAME@#'
 
 %build

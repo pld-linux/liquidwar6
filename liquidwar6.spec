@@ -5,7 +5,7 @@ Summary(pl.UTF-8):	Unikalna gra wojenna dla wielu graczy
 Name:		liquidwar6
 Version:	0.0.3
 Release:	0.beta.1
-License:	GPL v2+
+License:	GPL v3+
 Group:		X11/Applications/Games
 Source0:	http://download.savannah.gnu.org/releases/liquidwar6/%{name}-%{version}beta.tar.gz
 # Source0-md5:	92c4fe0e0bc781ca1bdd0ec22a4c64e3

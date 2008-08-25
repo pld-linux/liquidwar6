@@ -2,24 +2,37 @@ Summary:	A unique multiplayer wargame
 Summary(fr.UTF-8):	Un "wargame" multijoueur inédit
 Summary(de.UTF-8):	Ein einzigartiges Kriegspiel für mehrere Spieler
 Summary(pl.UTF-8):	Unikalna gra wojenna dla wielu graczy
-Name:		liquidwar
-Version:	5.6.4
-Release:	1
+Name:		liquidwar6
+Version:	0.0.3
+Release:	0.beta.1
 License:	GPL v2+
 Group:		X11/Applications/Games
-Source0:	http://download.savannah.nongnu.org/releases/liquidwar/%{name}-%{version}.tar.gz
-# Source0-md5:	6917dd1026e6685404ffbd086f8ba374
-Patch0:		%{name}-man_fix.patch
-Patch1:		%{name}-desktop.patch
-URL:		http://www.ufoot.org/liquidwar/
-BuildRequires:	allegro-devel
-BuildRequires:	allegro-tools
-BuildRequires:	autoconf
+Source0:	http://download.savannah.gnu.org/releases/liquidwar6/%{name}-%{version}beta.tar.gz
+# Source0-md5:	92c4fe0e0bc781ca1bdd0ec22a4c64e3
+URL:		http://www.ufoot.org/liquidwar/v6
+BuildRequires:	OpenGL-GLU-devel
+BuildRequires:	OpenGL-devel
+BuildRequires:	SDL-devel
+BuildRequires:	SDL_image-devel
+BuildRequires:	SDL_mixer-devel
+BuildRequires:	SDL_ttf-devel
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	python-modules
-BuildRequires:	tetex-dvips
-BuildRequires:	tetex-format-latex
+#BuildRequires:	csound-devel (http://www.csounds.com/)
+BuildRequires:	curl-devel
+BuildRequires:	expat-devel
+BuildRequires:	gmp-devel
+BuildRequires:	guile-devel >= 5:1.8
+BuildRequires:	libjpeg-devel
+BuildRequires:	libltdl-devel
+BuildRequires:	libogg-devel
+BuildRequires:	libpng-devel >= 1.2
+BuildRequires:	ncurses-devel
+BuildRequires:	readline-devel
+BuildRequires:	sqlite3-devel
 BuildRequires:	texinfo
+BuildRequires:	zlib-devel
+Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,25 +72,15 @@ Można wprawdzie grać w pojedynkę, ale gra jest zaprojektowana dla
 wielu graczy, też grających przez sieć.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%setup -q -n %{name}-%{version}beta
 
 %build
 cp -f %{_datadir}/automake/config.sub .
 %{__autoconf}
-%configure \
-%ifnarch %{ix86}
-	--disable-target-opt \
-	--disable-asm
-%endif
+CPPFLAGS="-I/usr/include/ncurses"
+%configure
 
 %{__make}
-
-cd doc/man
-echo '.so liquidwar.6' > liquidwar-server.6
-echo '.so liquidwar.6' > liquidwar-mapgen.6
-cd ../..
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -85,23 +88,27 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p	/sbin/postshell
+%post	-p /sbin/postshell
+/sbin/ldconfig
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun	-p	/sbin/postshell
+%postun	-p /sbin/postshell
+/sbin/ldconfig
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc doc/html/*.html doc/txt/*.txt
-%attr(755,root,root) %{_prefix}/games/liquidwar*
-%attr(755,root,root) %{_bindir}/liquidwar
-%attr(755,root,root) %{_bindir}/liquidwar-server
-%{_datadir}/games/liquidwar
-%{_mandir}/man*/*
-%{_infodir}/liquidwar.info*
-%{_desktopdir}/*.desktop
-%{_pixmapsdir}/*
+%attr(755,root,root) %{_bindir}/liquidwar6
+%attr(755,root,root) %{_libdir}/libliquidwar6-%{version}beta.so
+# FIXME: %{_libdir}, not %{_prefix}/lib
+%dir %{_prefix}/lib/liquidwar6-%{version}beta
+%dir %{_prefix}/lib/liquidwar6-%{version}beta/*
+%attr(755,root,root) %{_prefix}/lib/liquidwar6-%{version}beta/*/libmod_*.so
+%{_datadir}/liquidwar6-%{version}beta
+%{_mandir}/man6/liquidwar6.6*
+%{_infodir}/liquidwar6.info*

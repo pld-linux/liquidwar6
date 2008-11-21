@@ -9,6 +9,7 @@ License:	GPL v3+
 Group:		X11/Applications/Games
 Source0:	http://www.ufoot.org/download/liquidwar/v6/%{version}beta/%{name}-%{version}beta.tar.gz
 # Source0-md5:	8a6b4a6369d5f209a22c0911944bd542
+Patch0:		%{name}-readline.patch
 URL:		http://www.ufoot.org/liquidwar/v6
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	OpenGL-devel
@@ -72,6 +73,7 @@ wielu graczy, też grających przez sieć.
 
 %prep
 %setup -q -n %{name}-%{version}beta
+%patch0 -p1
 
 %build
 cp -f %{_datadir}/automake/config.sub .

@@ -106,10 +106,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/liquidwar6
 %attr(755,root,root) %{_libdir}/libliquidwar6-%{version}beta.so
-# FIXME: %{_libdir}, not %{_prefix}/lib
-%dir %{_prefix}/lib/liquidwar6-%{version}beta
-%dir %{_prefix}/lib/liquidwar6-%{version}beta/*
-%attr(755,root,root) %{_prefix}/lib/liquidwar6-%{version}beta/*/libmod_*.so
+%dir %{_libdir}/liquidwar6-%{version}beta
+%dir %{_libdir}/liquidwar6-%{version}beta/*
+%attr(755,root,root) %{_libdir}/liquidwar6-%{version}beta/*/libmod_*.so
+%dir %{_datadir}/liquidwar6-%{version}beta
+%dir %{_datadir}/liquidwar6-%{version}beta/*
 %{_datadir}/liquidwar6-%{version}beta
-%{_mandir}/man6/liquidwar6.6*
 %{_infodir}/liquidwar6.info*
+%{_mandir}/man6/liquidwar6.6*

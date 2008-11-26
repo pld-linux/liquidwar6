@@ -89,6 +89,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+find $RPM_BUILD_ROOT '(' -name '*.a' -o -name '*.la' -o -name '*.h' -o -name '*-test' ')' -print0 | xargs -0 rm -f
+
 %find_lang %{name}
 
 %clean
@@ -104,6 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/liquidwar6
 %attr(755,root,root) %{_libdir}/libliquidwar6-%{version}beta.so
 %dir %{_libdir}/liquidwar6-%{version}beta

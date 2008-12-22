@@ -3,12 +3,12 @@ Summary(fr.UTF-8):	Un "wargame" multijoueur inédit
 Summary(de.UTF-8):	Ein einzigartiges Kriegspiel für mehrere Spieler
 Summary(pl.UTF-8):	Unikalna gra wojenna dla wielu graczy
 Name:		liquidwar6
-Version:	0.0.4
+Version:	0.0.5
 Release:	0.beta.1
 License:	GPL v3+
 Group:		X11/Applications/Games
 Source0:	http://www.ufoot.org/download/liquidwar/v6/%{version}beta/%{name}-%{version}beta.tar.gz
-# Source0-md5:	8a6b4a6369d5f209a22c0911944bd542
+# Source0-md5:	8ff239ae6ea465a85064931e395068fe
 Patch0:		%{name}-readline.patch
 URL:		http://www.ufoot.org/liquidwar/v6
 BuildRequires:	OpenGL-GLU-devel

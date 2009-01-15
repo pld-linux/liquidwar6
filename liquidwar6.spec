@@ -3,13 +3,12 @@ Summary(fr.UTF-8):	Un "wargame" multijoueur inédit
 Summary(de.UTF-8):	Ein einzigartiges Kriegspiel für mehrere Spieler
 Summary(pl.UTF-8):	Unikalna gra wojenna dla wielu graczy
 Name:		liquidwar6
-Version:	0.0.5
+Version:	0.0.6
 Release:	0.beta.1
 License:	GPL v3+
 Group:		X11/Applications/Games
 Source0:	http://www.ufoot.org/download/liquidwar/v6/%{version}beta/%{name}-%{version}beta.tar.gz
-# Source0-md5:	8ff239ae6ea465a85064931e395068fe
-Patch0:		%{name}-readline.patch
+# Source0-md5:	a8eed80560bc9d33981653b6a29ebd0d
 URL:		http://www.ufoot.org/liquidwar/v6
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	OpenGL-devel
@@ -73,7 +72,6 @@ wielu graczy, też grających przez sieć.
 
 %prep
 %setup -q -n %{name}-%{version}beta
-%patch0 -p1
 
 %build
 cp -f %{_datadir}/automake/config.sub .
@@ -106,9 +104,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README doc/example/*.xml
 %attr(755,root,root) %{_bindir}/liquidwar6
 %attr(755,root,root) %{_libdir}/libliquidwar6-%{version}beta.so
+%attr(755,root,root) %{_libdir}/libliquidwar6.so
 %dir %{_libdir}/liquidwar6-%{version}beta
 %dir %{_libdir}/liquidwar6-%{version}beta/*
 %attr(755,root,root) %{_libdir}/liquidwar6-%{version}beta/*/libmod_*.so

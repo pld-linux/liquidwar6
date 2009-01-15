@@ -1,6 +1,6 @@
 Summary:	A unique multiplayer wargame
-Summary(fr.UTF-8):	Un "wargame" multijoueur inédit
 Summary(de.UTF-8):	Ein einzigartiges Kriegspiel für mehrere Spieler
+Summary(fr.UTF-8):	Un "wargame" multijoueur inédit
 Summary(pl.UTF-8):	Unikalna gra wojenna dla wielu graczy
 Name:		liquidwar6
 Version:	0.0.6
@@ -58,17 +58,19 @@ Spielen über Netzwerk.
 
 %description -l fr.UTF-8
 Liquid War est un "wargame" multijoueur inédit. Ses règles sont
-vraiment originales et ont été inventées par Thomas Colcombet. L'idée
-est de contrôler une armée de liquide et d'essayer de "manger" ses
-adversaires. Il est possible de jouer seul, mais le jeux est conçu
-pour se jouer à plusieurs, un mode réseau étant disponible.
+vraiment originales et ont été inventées par Thomas Colcombet.
+L'idée est de contrôler une armée de liquide et d'essayer de
+"manger" ses adversaires. Il est possible de jouer seul, mais le jeux
+est conçu pour se jouer à plusieurs, un mode réseau étant
+disponible.
 
 %description -l pl.UTF-8
-Liquid War jest unikalną grą dla wielu graczy. Jej zasady, wymyślone
-przez Thomasa Colcombeta są naprawdę nowatorskie. Kontrolujesz armię
-płynu i musisz spróbować stawić czoła i wchłonąć swoich przeciwników.
-Można wprawdzie grać w pojedynkę, ale gra jest zaprojektowana dla
-wielu graczy, też grających przez sieć.
+Liquid War jest unikalną grą dla wielu graczy. Jej zasady,
+wymyślone przez Thomasa Colcombeta są naprawdę nowatorskie.
+Kontrolujesz armię płynu i musisz spróbować stawić czoła i
+wchłonąć swoich przeciwników. Można wprawdzie grać w pojedynkę,
+ale gra jest zaprojektowana dla wielu graczy, też grających przez
+sieć.
 
 %prep
 %setup -q -n %{name}-%{version}beta

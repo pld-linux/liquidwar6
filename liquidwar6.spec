@@ -3,12 +3,12 @@ Summary(de.UTF-8):	Ein einzigartiges Kriegspiel für mehrere Spieler
 Summary(fr.UTF-8):	Un "wargame" multijoueur inédit
 Summary(pl.UTF-8):	Unikalna gra wojenna dla wielu graczy
 Name:		liquidwar6
-Version:	0.0.7
+Version:	0.0.8beta
 Release:	0.beta.1
 License:	GPL v3+
 Group:		X11/Applications/Games
-Source0:	http://www.ufoot.org/download/liquidwar/v6/%{version}beta/%{name}-%{version}beta.tar.gz
-# Source0-md5:	7e7784ea11265b2f8479dd059595b7a0
+Source0:	http://download.savannah.gnu.org/releases/liquidwar6/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	c43aec17c407524472ad56e624ad9f64
 URL:		http://www.ufoot.org/liquidwar/v6
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	OpenGL-devel
@@ -25,8 +25,9 @@ BuildRequires:	guile-devel >= 5:1.8
 BuildRequires:	libjpeg-devel
 BuildRequires:	libltdl-devel
 BuildRequires:	libogg-devel
-BuildRequires:	libpng-devel >= 1.2
+BuildRequires:	libpng12-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	openldap-devel
 BuildRequires:	readline-devel
 BuildRequires:	sqlite3-devel
 BuildRequires:	texinfo
@@ -58,22 +59,20 @@ Spielen über Netzwerk.
 
 %description -l fr.UTF-8
 Liquid War est un "wargame" multijoueur inédit. Ses règles sont
-vraiment originales et ont été inventées par Thomas Colcombet.
-L'idée est de contrôler une armée de liquide et d'essayer de
-"manger" ses adversaires. Il est possible de jouer seul, mais le jeux
-est conçu pour se jouer à plusieurs, un mode réseau étant
-disponible.
+vraiment originales et ont été inventées par Thomas Colcombet. L'idée
+est de contrôler une armée de liquide et d'essayer de "manger" ses
+adversaires. Il est possible de jouer seul, mais le jeux est conçu
+pour se jouer à plusieurs, un mode réseau étant disponible.
 
 %description -l pl.UTF-8
-Liquid War jest unikalną grą dla wielu graczy. Jej zasady,
-wymyślone przez Thomasa Colcombeta są naprawdę nowatorskie.
-Kontrolujesz armię płynu i musisz spróbować stawić czoła i
-wchłonąć swoich przeciwników. Można wprawdzie grać w pojedynkę,
-ale gra jest zaprojektowana dla wielu graczy, też grających przez
-sieć.
+Liquid War jest unikalną grą dla wielu graczy. Jej zasady, wymyślone
+przez Thomasa Colcombeta są naprawdę nowatorskie. Kontrolujesz armię
+płynu i musisz spróbować stawić czoła i wchłonąć swoich przeciwników.
+Można wprawdzie grać w pojedynkę, ale gra jest zaprojektowana dla
+wielu graczy, też grających przez sieć.
 
 %prep
-%setup -q -n %{name}-%{version}beta
+%setup -q
 
 %build
 cp -f %{_datadir}/automake/config.sub .
@@ -108,13 +107,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README doc/example/*.xml
 %attr(755,root,root) %{_bindir}/liquidwar6
-%attr(755,root,root) %{_libdir}/libliquidwar6-%{version}beta.so
+%attr(755,root,root) %{_libdir}/libliquidwar6-%{version}.so
 %attr(755,root,root) %{_libdir}/libliquidwar6.so
-%dir %{_libdir}/liquidwar6-%{version}beta
-%dir %{_libdir}/liquidwar6-%{version}beta/*
-%attr(755,root,root) %{_libdir}/liquidwar6-%{version}beta/*/libmod_*.so
-%dir %{_datadir}/liquidwar6-%{version}beta
-%dir %{_datadir}/liquidwar6-%{version}beta/*
-%{_datadir}/liquidwar6-%{version}beta
+%dir %{_libdir}/liquidwar6-%{version}
+%dir %{_libdir}/liquidwar6-%{version}/*
+%attr(755,root,root) %{_libdir}/liquidwar6-%{version}/*/libmod_*.so
+%dir %{_datadir}/liquidwar6-%{version}
+%dir %{_datadir}/liquidwar6-%{version}/*
+%{_datadir}/liquidwar6-%{version}
 %{_infodir}/liquidwar6.info*
 %{_mandir}/man6/liquidwar6.6*

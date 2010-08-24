@@ -1,0 +1,24 @@
+--- liquidwar6-0.0.9beta/configure.ac~	2010-08-23 19:24:33.000000000 +0200
++++ liquidwar6-0.0.9beta/configure.ac	2010-08-24 12:31:43.903236019 +0200
+@@ -288,20 +288,7 @@
+ ]))
+ fi
+ 
+-AC_CHECK_HEADER(libpng12/png.h, HAVE_LIBPNG12_PNG_H=1)
+-AC_CHECK_HEADER(libpng14/png.h, HAVE_LIBPNG14_PNG_H=1)
+-if test x${HAVE_LIBPNG12_PNG_H} = x1 || test x${HAVE_LIBPNG_14_PNG_H} = x1; then
+-   if test x${HAVE_LIBPNG12_PNG_H} = x1; then
+-      LIBPNG_1X_H=libpng12/png.h
+-   fi
+-   if test x${HAVE_LIBPNG14_PNG_H} = x1; then
+-      LIBPNG_1X_H=libpng14/png.h
+-   fi
+-else
+-   AC_MSG_ERROR([
+-*** Liquid War 6 needs libpng 1.2 or libpng 1.4 (http://www.libpng.org/pub/png/libpng.html)
+-])
+-fi
++AC_CHECK_HEADER(libpng14/png.h, LIBPNG_1X_H=libpng14/png.h)
+ AC_SUBST(LIBPNG_1X_H)
+ 
+ AC_CHECK_LIB(png, png_sig_cmp, HAVE_LIBPNG=1, AC_MSG_ERROR([

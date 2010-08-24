@@ -1,0 +1,8 @@
+--- liquidwar6-0.0.9beta/pkg/liquidwar6.desktop.in~	2010-07-09 15:30:45.000000000 +0200
++++ liquidwar6-0.0.9beta/pkg/liquidwar6.desktop.in	2010-08-24 12:44:29.665664886 +0200
+@@ -6,4 +6,4 @@
+ Icon=liquidwar6
+ Exec=liquidwar6
+ Terminal=false
+-Categories=Game;
++Categories=Game;ArcadeGame;

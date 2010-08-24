@@ -3,12 +3,14 @@ Summary(de.UTF-8):	Ein einzigartiges Kriegspiel für mehrere Spieler
 Summary(fr.UTF-8):	Un "wargame" multijoueur inédit
 Summary(pl.UTF-8):	Unikalna gra wojenna dla wielu graczy
 Name:		liquidwar6
-Version:	0.0.8beta
+Version:	0.0.9beta
 Release:	0.beta.1
 License:	GPL v3+
 Group:		X11/Applications/Games
 Source0:	http://download.savannah.gnu.org/releases/liquidwar6/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	c43aec17c407524472ad56e624ad9f64
+# Source0-md5:	0d110b3a20737aa01a144455054db586
+Patch0:		%{name}-libpng.patch
+Patch1:		%{name}-desktop.patch
 URL:		http://www.ufoot.org/liquidwar/v6
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	OpenGL-devel
@@ -25,7 +27,7 @@ BuildRequires:	guile-devel >= 5:1.8
 BuildRequires:	libjpeg-devel
 BuildRequires:	libltdl-devel
 BuildRequires:	libogg-devel
-BuildRequires:	libpng12-devel
+BuildRequires:	libpng-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	openldap-devel
 BuildRequires:	readline-devel
@@ -73,6 +75,8 @@ wielu graczy, też grających przez sieć.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 cp -f %{_datadir}/automake/config.sub .
@@ -117,3 +121,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/liquidwar6-%{version}
 %{_infodir}/liquidwar6.info*
 %{_mandir}/man6/liquidwar6.6*
+%{_desktopdir}/liquidwar6.desktop
+%{_pixmapsdir}/liquidwar6.png
